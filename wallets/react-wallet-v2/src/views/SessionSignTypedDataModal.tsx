@@ -4,6 +4,7 @@ import RequesDetailsCard from '@/components/RequestDetalilsCard'
 import RequestMethodCard from '@/components/RequestMethodCard'
 import RequestModalContainer from '@/components/RequestModalContainer'
 import ModalStore from '@/store/ModalStore'
+import { approveEIP4337Request, rejectEIP4337Request } from '@/utils/EIP4337RequestHandlerUtil'
 import { approveEIP155Request, rejectEIP155Request } from '@/utils/EIP155RequestHandlerUtil'
 import { getSignTypedDataParamsData } from '@/utils/HelperUtil'
 import { signClient } from '@/utils/WalletConnectUtil'
@@ -30,7 +31,8 @@ export default function SessionSignTypedDataModal() {
   // Handle approve action (logic varies based on request method)
   async function onApprove() {
     if (requestEvent) {
-      const response = await approveEIP155Request(requestEvent)
+      // const response = await approveEIP155Request(requestEvent)
+      const response = await approveEIP4337Request(requestEvent)
       await signClient.respond({
         topic,
         response
@@ -42,7 +44,8 @@ export default function SessionSignTypedDataModal() {
   // Handle reject action
   async function onReject() {
     if (requestEvent) {
-      const response = rejectEIP155Request(requestEvent)
+      // const response = rejectEIP155Request(requestEvent)
+      const response = rejectEIP4337Request(requestEvent)
       await signClient.respond({
         topic,
         response

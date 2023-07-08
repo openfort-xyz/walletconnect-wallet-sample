@@ -6,14 +6,8 @@ import { proxy } from 'valtio'
 interface State {
   testNets: boolean
   account: number
+  eip4337Address: string
   eip155Address: string
-  cosmosAddress: string
-  solanaAddress: string
-  polkadotAddress: string
-  nearAddress: string
-  multiversxAddress: string
-  tronAddress: string
-  tezosAddress: string
   relayerRegionURL: string
   activeChainId: string
 }
@@ -25,14 +19,8 @@ const state = proxy<State>({
   testNets: typeof localStorage !== 'undefined' ? Boolean(localStorage.getItem('TEST_NETS')) : true,
   account: 0,
   activeChainId: '1',
+  eip4337Address: '',
   eip155Address: '',
-  cosmosAddress: '',
-  solanaAddress: '',
-  polkadotAddress: '',
-  nearAddress: '',
-  multiversxAddress: '',
-  tronAddress: '',
-  tezosAddress: '',
   relayerRegionURL: ''
 })
 
@@ -46,38 +34,16 @@ const SettingsStore = {
     state.account = value
   },
 
+  setEIP4337Address(eip4337Address: string) {
+    state.eip4337Address = eip4337Address
+  },
+
   setEIP155Address(eip155Address: string) {
     state.eip155Address = eip155Address
   },
-
-  setCosmosAddress(cosmosAddresses: string) {
-    state.cosmosAddress = cosmosAddresses
-  },
-
-  setSolanaAddress(solanaAddress: string) {
-    state.solanaAddress = solanaAddress
-  },
-
-  setPolkadotAddress(polkadotAddress: string) {
-    state.polkadotAddress = polkadotAddress
-  },
-  setNearAddress(nearAddress: string) {
-    state.nearAddress = nearAddress
-  },
+  
   setRelayerRegionURL(relayerRegionURL: string) {
     state.relayerRegionURL = relayerRegionURL
-  },
-
-  setMultiversxAddress(multiversxAddress: string) {
-    state.multiversxAddress = multiversxAddress
-  },
-
-  setTronAddress(tronAddress: string) {
-    state.tronAddress = tronAddress
-  },
-
-  setTezosAddress(tezosAddress: string) {
-    state.tezosAddress = tezosAddress
   },
 
   setActiveChainId(value: string) {

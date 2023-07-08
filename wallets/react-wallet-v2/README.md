@@ -1,4 +1,4 @@
-# Wallet Example (React, Typescript, Ethers, NextJS, Cosmos)
+# Wallet Example
 
 This example aims to demonstrate basic and advanced use cases enabled by WalletConnect's Sign SDK.
 

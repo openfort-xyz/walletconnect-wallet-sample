@@ -6,12 +6,12 @@
 /**
  * Types
  */
-export type TEIP155Chain = keyof typeof EIP155_CHAINS
+export type TEIP4337Chain = keyof typeof EIP4337_CHAINS
 
 /**
  * Chains
  */
-// export const EIP155_MAINNET_CHAINS = {
+// export const EIP4337_MAINNET_CHAINS = {
 //   'eip155:1': {
 //     chainId: 1,
 //     name: 'Ethereum',
@@ -49,7 +49,7 @@ export type TEIP155Chain = keyof typeof EIP155_CHAINS
 //   },
 // }
 
-export const EIP155_TEST_CHAINS = {
+export const EIP4337_TEST_CHAINS = {
   // 'eip155:5': {
   //   chainId: 5,
   //   name: 'Ethereum Goerli',
@@ -87,12 +87,12 @@ export const EIP155_TEST_CHAINS = {
   // },
 }
 
-export const EIP155_CHAINS = { ...EIP155_TEST_CHAINS }
+export const EIP4337_CHAINS = { ...EIP4337_TEST_CHAINS }
 
 /**
  * Methods
  */
-export const EIP155_SIGNING_METHODS = {
+export const EIP4337_SIGNING_METHODS = {
   PERSONAL_SIGN: 'personal_sign',
   ETH_SIGN: 'eth_sign',
   ETH_SIGN_TRANSACTION: 'eth_signTransaction',

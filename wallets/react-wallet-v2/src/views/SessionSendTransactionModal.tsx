@@ -4,6 +4,7 @@ import RequesDetailsCard from '@/components/RequestDetalilsCard'
 import RequestMethodCard from '@/components/RequestMethodCard'
 import RequestModalContainer from '@/components/RequestModalContainer'
 import ModalStore from '@/store/ModalStore'
+import { approveEIP4337Request, rejectEIP4337Request } from '@/utils/EIP4337RequestHandlerUtil'
 import { approveEIP155Request, rejectEIP155Request } from '@/utils/EIP155RequestHandlerUtil'
 import { signClient } from '@/utils/WalletConnectUtil'
 import { Button, Divider, Loading, Modal, Text } from '@nextui-org/react'
@@ -31,7 +32,8 @@ export default function SessionSendTransactionModal() {
   async function onApprove() {
     if (requestEvent) {
       setLoading(true)
-      const response = await approveEIP155Request(requestEvent)
+      // const response = await approveEIP155Request(requestEvent)
+      const response = await approveEIP4337Request(requestEvent)
       await signClient.respond({
         topic,
         response
@@ -43,7 +45,8 @@ export default function SessionSendTransactionModal() {
   // Handle reject action
   async function onReject() {
     if (requestEvent) {
-      const response = rejectEIP155Request(requestEvent)
+      const response = rejectEIP4337Request(requestEvent)
+      // const response = rejectEIP155Request(requestEvent)
       await signClient.respond({
         topic,
         response

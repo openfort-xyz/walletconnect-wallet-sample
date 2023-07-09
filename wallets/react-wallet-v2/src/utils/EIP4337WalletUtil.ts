@@ -10,7 +10,7 @@ let address1: string
  * Utilities
  */
 export async function createOrRestoreEIP4337Wallet() {
-  wallet1 = await EIP4337Lib.init({mnemonic: "...mnemonic..."}) // Put the mnemonic here
+  wallet1 = await EIP4337Lib.init({mnemonic: "...MNEMONIC..."}) // Put the mnemonic here
 
   address1 = "...OPENFORT_ACCOUNT..."; // Put your openfort account address here
 

@@ -7,7 +7,7 @@ Please only use this for reference and development purposes, otherwise you are a
 
 ## Features
 - 🚀 NextJS & Typescript
-- WalletConnect v2
+- 🔗 WalletConnect v2
 - 🏰 Openfort Accounts
 
 

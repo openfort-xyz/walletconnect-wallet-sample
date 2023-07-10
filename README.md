@@ -27,8 +27,8 @@ cp .env.local.example .env.local
 
 Your `.env.local` now contains the following environment variables:
 
-- `NEXT_PUBLIC_PROJECT_ID` (placeholder) - You can generate your own ProjectId at https://cloud.walletconnect.com
-- `NEXT_PUBLIC_RELAY_URL` - Put your WalletConnect project id from step 1
+- `NEXT_PUBLIC_PROJECT_ID` - Put your WalletConnect project id from step 1
+- `NEXT_PUBLIC_RELAY_URL` - (already set)
 
 4. Replace the following values from:
 

@@ -1,40 +1,59 @@
-# WalletConnect v2 Examples
+# Wallet Example using Walletconnect
 
-Catalogue of various wallet and dapp examples implementing WalletConnect's **SDKs and APIs**. Each example contains its own README with further instructions and explanations.
+This sample aims to show a basic use case enabled by WalletConnect's Sign SDK so games can let their players interact with their own Openfort accounts. Please note that WalletConnect can only be used with self-custodial Openfort accounts as it needs the owner to sign transactions.
 
-### Web3Wallet SDK
-
-**Wallets:**
-
-- [React Web3Wallet SDK](https://github.com/WalletConnect/web-examples/tree/main/wallets/react-web3wallet) ([Demo](https://react-web3wallet.vercel.app))
-
-### Sign API
-
-**Wallets:**
-
-- [React Wallet (Sign v1 + v2)](https://github.com/WalletConnect/web-examples/tree/main/wallets/react-wallet-v2) ([Demo](https://react-wallet.walletconnect.com/))
-
-**dApps:**
-
-- [React dApp (with standalone client) - v2](https://github.com/WalletConnect/web-examples/tree/main/dapps/react-dapp-v2) ([Demo](https://react-app.walletconnect.com/))
-- [React dApp (with EthereumProvider + Ethers.js) - v2](https://github.com/WalletConnect/web-examples/tree/main/dapps/react-dapp-v2-with-ethers) ([Demo](https://react-dapp-v2-with-ethers.vercel.app/))
-- [React dApp (with EthereumProvider + web3.js) - v2](https://github.com/WalletConnect/web-examples/tree/main/dapps/react-dapp-v2-with-web3js) ([Demo](https://react-dapp-v2-with-web3js.vercel.app/))
-
-### Auth API
-
-**Wallets:**
-
-- [React Auth
-  Wallet](https://github.com/WalletConnect/web-examples/tree/main/wallets/react-wallet-auth) ([Demo](https://react-auth-wallet.vercel.app))
-
-**dApps:**
-
-- [React Auth dApp](https://github.com/WalletConnect/web-examples/tree/main/dapps/react-dapp-auth) ([Demo](https://react-auth-dapp.walletconnect.com/))
-- [Vue Auth dApp](https://github.com/WalletConnect/web-examples/tree/main/dapps/vue-dapp-auth) ([Demo](https://vue-dapp-auth.vercel.app/))
+Please only use this for reference and development purposes, otherwise you are at risk of losing your funds.
 
 
-### Chat API
+## Features
+- 🚀 NextJS & Typescript
+- WalletConnect v2
+- 🏰 Openfort Accounts
 
-**Wallets:**
 
-- [React Chat Wallet](https://github.com/WalletConnect/web-examples/tree/main/wallets/react-wallet-chat) ([Demo](https://react-wallet-chat.walletconnect.com/))
+## How to run locally
+
+Example is built atop of [NextJS](https://nextjs.org/) in order to abstract complexity of setting up bundlers, routing etc. So there are few steps you need to follow in order to set everything up
+
+1. Go to [WalletConnect Cloud](https://cloud.walletconnect.com/sign-in) and obtain a project id
+
+2. Install dependencies `yarn install` or `npm install`
+
+3. Setup your environment variables
+
+```bash
+cp .env.local.example .env.local
+```
+
+Your `.env.local` now contains the following environment variables:
+
+- `NEXT_PUBLIC_PROJECT_ID` (placeholder) - You can generate your own ProjectId at https://cloud.walletconnect.com
+- `NEXT_PUBLIC_RELAY_URL` - Put your WalletConnect project id from step 1
+
+4. Replace the following values from:
+
+- `wallets/react-wallet-v2/src/utils/EIP4337WalletUtil.ts`
+    - `...MNEMONIC...` with the mnemonic of the owner of the Openfort account.
+    - `...OPENFORT_ACCOUNT...` with the address the Openfort account to use.
+
+- `wallets/react-wallet-v2/src/lib/constants.ts`
+    - `...MUMBAI_BUNDLER...` URL of a valid bundler. This sample is configured to run on the Mumbai network.
+
+5. Run `yarn dev` or `npm run dev` to start local development
+
+
+## Navigating through the sample
+
+1. Initial setup and initializations happen in [_app.ts](src/pages/_app.tsx) file.
+2. The WalletConnect client is initialized in [useInitialization.ts ](src/hooks/useInitialization.ts) hook.
+3. Subscription and handling of WalletConnect events happens in [useWalletConnectEventsManager.ts](src/hooks/useWalletConnectEventsManager.ts) hook, that opens related [Modal views](src/views) and passes them all necessary data.
+4. [Modal views](src/views) are responsible for data display and handling approval or rejection actions.
+5. Upon approval or rejection, modals pass the request data to [RequestHandlerUtil.ts](src/utils/RequestHandlerUtil.ts) that performs all necessary work based on the request method and returns formated json rpc result data that can be then used for WalletConnect client responses.
+
+## Get support
+If you found a bug or want to suggest a new [feature/use case/sample], please [file an issue](../../../issues).
+
+If you have questions, comments, or need help with code, we're here to help:
+- on [Discord](https://discord.com/invite/t7x7hwkJF4)
+- on Twitter at [@openfortxyz](https://twitter.com/openfortxyz)
+- by [email](mailto:support+github@openfort.xyz)

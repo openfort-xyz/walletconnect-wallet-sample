@@ -39,6 +39,9 @@ Your `.env.local` now contains the following environment variables:
 - `wallets/react-wallet-v2/src/lib/constants.ts`
     - `...MUMBAI_BUNDLER...` URL of a valid bundler. This sample is configured to run on the Mumbai network.
 
+- `wallets/react-wallet-v2/src/lib/EIP4337Lib.ts`
+    - `...OPENFORT_ACCOUNT...` with the address the Openfort account to use.
+
 5. Run `yarn dev` or `npm run dev` to start local development
 
 
